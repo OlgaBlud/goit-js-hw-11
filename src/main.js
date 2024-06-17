@@ -21,6 +21,7 @@ function onSearchBtnSubmit(event) {
   const valueToSearch = event.target.elements.searchField.value.trim();
 
   if (valueToSearch === '') {
+    gallery.innerHTML = '';
     displayMessage('You forgot enter data for search', '#ffa000');
     return;
   }
@@ -29,6 +30,7 @@ function onSearchBtnSubmit(event) {
   fetchPhotos(valueToSearch)
     .then(data => {
       if (data.hits.length === 0) {
+        gallery.innerHTML = '';
         displayMessage(
           'Sorry, there are no images matching your search query. Please try again!',
           '#EF4040'
