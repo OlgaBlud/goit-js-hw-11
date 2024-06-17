@@ -15,5 +15,5 @@ export function fetchPhotos(query) {
       }
       return response.json();
     })
-    .catch(error => console.log(error));
+    .catch(error => console.log('Error fetching photos:', error));
 }

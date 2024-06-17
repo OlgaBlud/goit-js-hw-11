@@ -19,36 +19,46 @@ searchForm.addEventListener('submit', onSearchBtnSubmit);
 function onSearchBtnSubmit(event) {
   event.preventDefault();
   const valueToSearch = event.target.elements.searchField.value.trim();
+
   if (valueToSearch === '') {
-    iziToast.warning({
-      title: 'Caution',
-      message: 'You forgot enter data for search',
-      position: 'topRight',
-      backgroundColor: '#ffa000',
-      messageColor: '#fff',
-      theme: 'dark',
-      maxWidth: '350px',
-    });
+    displayMessage('You forgot enter data for search', '#ffa000');
     return;
   }
   loader.classList.remove('visually-hidden');
-  fetchPhotos(valueToSearch).then(data => {
-    if (data.hits.length === 0) {
-      iziToast.show({
-        message:
+
+  fetchPhotos(valueToSearch)
+    .then(data => {
+      if (data.hits.length === 0) {
+        displayMessage(
           'Sorry, there are no images matching your search query. Please try again!',
-        backgroundColor: '#EF4040',
-        position: 'topRight',
-        iconUrl: closeIcon,
-        messageColor: '#fff',
-        theme: 'dark',
-        maxWidth: '350px',
-      });
-    }
-    loader.classList.add('visually-hidden');
-    const markup = galleryTemplate(data.hits);
-    gallery.innerHTML = markup;
-    lightbox.refresh();
-  });
+          '#EF4040'
+        );
+      } else {
+        const markup = galleryTemplate(data.hits);
+        gallery.innerHTML = markup;
+        lightbox.refresh();
+      }
+
+      loader.classList.add('visually-hidden');
+    })
+    .catch(error => {
+      displayMessage(
+        'An error occurred while fetching photos. Please try again later.',
+        '#EF4040'
+      );
+      loader.classList.add('visually-hidden');
+    });
   searchForm.reset();
+}
+
+function displayMessage(message, color) {
+  iziToast.show({
+    message: message,
+    position: 'topRight',
+    backgroundColor: color,
+    iconUrl: closeIcon,
+    messageColor: '#fff',
+    theme: 'dark',
+    maxWidth: '350px',
+  });
 }
