@@ -8,7 +8,7 @@ body {
 section {
   padding-top: 36px;
 }
-.form {
+.search-form {
   width: 450px;
   margin: 0 auto;
 }
@@ -59,4 +59,41 @@ section {
 .search-btn:hover,
 .search-btn:focus {
   background: #6c8cff;
+}
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+}
+.gallery-item {
+  border: 1px solid #808080;
+  width: 360px;
+  height: 200px;
+}
+.gallery-item-img {
+  display: block;
+  height: 80%;
+  width: 100%;
+  object-fit: cover;
+}
+.photo-info-list {
+  display: flex;
+  padding: 4px 20px;
+  justify-content: space-between;
+}
+
+.photo-data-name {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 1.33333;
+  letter-spacing: 0.04em;
+  color: #2e2f42;
+}
+.photo-data {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 2;
+  letter-spacing: 0.04em;
+  color: #2e2f42;
 }
