@@ -6,7 +6,6 @@ import closeIcon from './img/close.svg';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
-// смс не пуста відповідь
 const searchForm = document.querySelector('.search-form');
 const gallery = document.querySelector('.gallery');
 const loader = document.querySelector('.loader');
@@ -19,7 +18,6 @@ searchForm.addEventListener('submit', onSearchBtnSubmit);
 
 function onSearchBtnSubmit(event) {
   event.preventDefault();
-  //   const valueToSearch = searchForm.searchField.value.trim();
   const valueToSearch = event.target.elements.searchField.value.trim();
   if (valueToSearch === '') {
     iziToast.warning({
