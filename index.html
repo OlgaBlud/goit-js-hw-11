@@ -7,7 +7,9 @@
     <title>Vanilla App Template</title>
     
     <script type="module" crossorigin src="/goit-js-hw-11/commonHelpers.js"></script>
-    <link rel="stylesheet" href="/goit-js-hw-11/assets/index-42538d07.css">
+    <link rel="modulepreload" crossorigin href="/goit-js-hw-11/assets/vendor-8c59ed88.js">
+    <link rel="stylesheet" href="/goit-js-hw-11/assets/vendor-1cd1f9d9.css">
+    <link rel="stylesheet" href="/goit-js-hw-11/assets/index-b12b9150.css">
   </head>
   <body>
     <section>
@@ -20,6 +22,7 @@
         />
         <button type="submit" class="search-btn">Search</button>
       </form>
+      <span class="loader visually-hidden"></span>
     </section>
     <section>
       <ul class="gallery"></ul>
